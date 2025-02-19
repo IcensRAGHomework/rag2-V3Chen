@@ -83,6 +83,3 @@ def hw02_1(q1_pdf):
 def hw02_2(q2_pdf):
     recursive_split_with_regex(q2_pdf)
     pass
-
-hw02_1(q1_pdf)
-hw02_2(q2_pdf)
