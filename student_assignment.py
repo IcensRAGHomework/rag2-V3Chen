@@ -48,8 +48,8 @@ def recursive_split_text():
     result = spliter.split_text(split_target)
     print("\"-\" ,\" \" split:", result)
 
-def recursive_split_with_regex(q2_pdf):
-    loader = PyPDFLoader(q2_pdf)
+def recursive_split_with_regex(input_pdf):
+    loader = PyPDFLoader(input_pdf)
     docs = loader.load()
     text = ""
     for doc in docs:
