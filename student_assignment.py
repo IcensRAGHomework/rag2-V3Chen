@@ -38,8 +38,39 @@ def split_doc():
     result = spliter.split_documents(docs)
     print(result)
 
+def recursive_split_text():
+    split_target = "ABC - DEF dfdfdf- GHI - JKL - MNO - PQR - STU - VW - XYZ"
+    print("Before Split  :", split_target)
+
+    spliter = RecursiveCharacterTextSplitter(separators=["-", " "],
+                                             chunk_size=6,
+                                             chunk_overlap=0)
+    result = spliter.split_text(split_target)
+    print("\"-\" ,\" \" split:", result)
+
+def recursive_split_with_regex(q2_pdf):
+    loader = PyPDFLoader(q2_pdf)
+    docs = loader.load()
+    text = ""
+    for doc in docs:
+        text = text + doc.page_content + "\n"
+    spliter = RecursiveCharacterTextSplitter(separators=["第 (?:[一二三四五六七八九十]+|\\d+-?\\d*) (?:章|條\n)"], chunk_size=0, chunk_overlap=0, is_separator_regex=True, keep_separator=True)
+    result = spliter.create_documents([text])
+    print(len(result))
+    # print(result)
+    # print_docs(result)
+    # print(result[0])
+    # print(result[1])
+    # print(result[2])
+    # print(result[3])
+    # print(result[4])
+    return len(result)
+
+
 # split_doc()
 # print_docs(load_with_pyPdf(q1_pdf))
+# recursive_split_text()
+recursive_split_with_regex(q2_pdf)
 print("wahaha")
 
 def hw02_1(q1_pdf):
@@ -50,6 +81,8 @@ def hw02_1(q1_pdf):
     return result[-1]
 
 def hw02_2(q2_pdf):
+    recursive_split_with_regex(q2_pdf)
     pass
 
 hw02_1(q1_pdf)
+hw02_2(q2_pdf)
