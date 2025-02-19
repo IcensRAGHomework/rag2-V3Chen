@@ -70,8 +70,8 @@ def recursive_split_with_regex(input_pdf):
 # split_doc()
 # print_docs(load_with_pyPdf(q1_pdf))
 # recursive_split_text()
-recursive_split_with_regex(q2_pdf)
-print("wahaha")
+# recursive_split_with_regex(q2_pdf)
+# print("wahaha")
 
 def hw02_1(q1_pdf):
     q1_doc = load_with_pyPdf(q1_pdf)
